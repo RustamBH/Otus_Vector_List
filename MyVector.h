@@ -93,8 +93,8 @@ template<typename T>
 inline T& MyVector<T>::operator[](T index)
 {
     // TODO: insert return statement here
-    if (index < 0 || index > m_size) {        
-        std::cout << "Erase is impossible. Index " << index << " out of range." << std::endl;       
+    if (index < 0 || index >= m_size) {        
+        std::cout << "Take value is impossible. Index " << index << " out of range." << std::endl;       
     } else 
         return m_region[index];    
 }
