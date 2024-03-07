@@ -33,7 +33,6 @@ private:
 
 template <typename T>
 void MyVector<T>::push_back(T value) {
-
     if (m_size < m_capacity) {
         m_region[m_size] = value;
         ++m_size;
@@ -49,7 +48,6 @@ void MyVector<T>::push_back(T value) {
         m_region = temp;
         ++m_size;
     }
-
 }
 
 
@@ -57,7 +55,7 @@ template<typename T>
 void MyVector<T>::insert(size_t index, T value)
 {
     if (index < 0 || index > m_size) {        
-        std::cout << "Erase is impossible. Index " << index << " out of range." << std::endl;
+        std::cout << "Insert is impossible. Index " << index << " out of range." << std::endl;
         return;
     }
 
@@ -82,7 +80,7 @@ void MyVector<T>::insert(size_t index, T value)
 
 template <typename T>
 void MyVector<T>::erase(size_t index) {
-    if (index < 0 || index > m_size) {
+    if (index < 0 || index >= m_size) {
         std::cout << "Erase is impossible. Index " << index << " out of range." << std::endl;
         return;
     }   
