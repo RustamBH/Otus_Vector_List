@@ -30,9 +30,8 @@ int main()
     myvec.print(); // 10 0 1 3 20 5 7 8 9
     int sz = myvec.getSize(); // 9
     myvec.insert(sz, 30);
-    myvec.print(); // 10 0 1 3 20 5 7 8 9 30      
-
-    //std::cout << "myvec[9] = " << myvec[9] << std::endl; // 30
+    myvec.print(); // 10 0 1 3 20 5 7 8 9 30
+    
     std::cout << "myvec[" << sz << "] = " << myvec[sz] << std::endl; // 30
     std::cout << "Size myvec " << myvec.getSize() << std::endl; // 10
     std::cout << "Capacity myvec = " << myvec.getCapacity() << std::endl;  // 16 
