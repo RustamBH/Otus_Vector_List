@@ -19,7 +19,6 @@ public:
     void pop_front();
     void pop_back();
 
-
 private:
     template <typename T>
     class Node {
@@ -27,7 +26,6 @@ private:
         Node* prev;
         Node* next;
         T data;
-
         Node(T data_ = T(), Node* prev_ = nullptr, Node* next_ = nullptr) : data{ data_ }, prev{ prev_ }, next{ next_ }{}
     };
 
