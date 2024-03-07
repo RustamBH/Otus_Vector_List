@@ -29,11 +29,6 @@ private:
         T data;
 
         Node(T data_ = T(), Node* prev_ = nullptr, Node* next_ = nullptr) : data{ data_ }, prev{ prev_ }, next{ next_ }{}
-        /*Node(T data = T(), Node* prev = nullptr, Node* next = nullptr) {
-            this->data = data;
-            this->prev = prev;
-            this->next = next;
-        }*/
     };
 
     size_t m_size;
@@ -130,8 +125,8 @@ void MyList<T>::erase(T value)
         current = current->next;
     }
 
-    if (!next_node) {
-        std::cout << "This element does not exist" << std::endl;
+    if (!next_node) {        
+        std::cout << "This element \"" << value << "\" does not exist" << std::endl;
         return;
     }
     current->next = next_node->next;
