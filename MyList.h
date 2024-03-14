@@ -37,10 +37,10 @@ private:
 template<typename T>
 void MyList<T>::clear()
 {
-    Node<T>* current = this->m_head;
+    auto current = this->m_head;
     while (current != nullptr)
     {
-        Node<T>* temp = current->next;
+        auto temp = current->next;
         delete current;
         current = temp;        
     }
@@ -51,7 +51,7 @@ void MyList<T>::clear()
 template<typename T>
 void MyList<T>::push_back(const T& value)
 {
-    Node<T>* new_node = new Node<T>{ value }; // создание нового узла
+    auto new_node = new Node<T>{ value }; // создание нового узла
     if (is_empty()) {
         this->m_head = new_node;
         this->m_last = new_node;        
@@ -87,7 +87,7 @@ void MyList<T>::insert(size_t index, const T& value)
         push_back(value);
     }
     else {
-        Node<T>* current = this->m_head;
+        auto current = this->m_head;
         size_t n{ 0 };
         while (n != index)
         {
@@ -95,7 +95,7 @@ void MyList<T>::insert(size_t index, const T& value)
             ++n;
         }
 
-        Node<T>* newNode = new Node<T>{ value, current->prev, current };
+        auto newNode = new Node<T>{ value, current->prev, current };
         current->prev->next = newNode;
         current->prev = newNode;
         m_size++;
@@ -115,8 +115,8 @@ void MyList<T>::erase(T value)
         return;
     }
 
-    Node<T>* current = m_head;
-    Node<T>* next_node = m_head->next;
+    auto current = m_head;
+    auto next_node = m_head->next;
 
     while (next_node && next_node->data != value) {
         next_node = next_node->next;
@@ -142,7 +142,7 @@ T& MyList<T>::operator[](const T index)
     }
     else {
         int counter = 0;
-        Node<T>* current = this->m_head;
+        auto current = this->m_head;
         while (current != nullptr)
         {
             if (counter == index) {
@@ -158,7 +158,7 @@ template<typename T>
 void MyList<T>::print() const
 {    
     if (this->m_head == nullptr) return;
-    Node<T>* current = this->m_head;
+    auto current = this->m_head;
     while (current != nullptr)
     {
         std::cout << current->data << " ";
@@ -171,7 +171,7 @@ template<typename T>
 void MyList<T>::pop_front()
 {
     if (is_empty()) return;
-    Node<T>* temp = this->m_head;
+    auto temp = this->m_head;
     this->m_head = m_head->next;
     delete temp;
     m_size--;
