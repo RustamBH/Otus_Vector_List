@@ -108,5 +108,6 @@ std::string MyVector<T>::print() const
     if (m_size == 0) return buffer.str();// пустая строка 
     for (size_t i = 0; i < m_size; ++i)
         buffer << m_region[i] << " ";
-    buffer << std::endl;    
+    buffer << std::endl;
+    return buffer.str();
 }
