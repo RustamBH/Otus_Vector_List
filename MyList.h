@@ -155,17 +155,16 @@ T& MyList<T>::operator[](const T index)
 template<typename T>
 std::string MyList<T>::print() const
 {    
-	std::stringstream buffer{};
-	if (this->m_head == nullptr) return buffer.str(); // пустая строка
-	auto current = this->m_head;
-	while (current != nullptr)
-	{
-    	buffer << current->data << " ";
-    	current = current->next;
-	}
-	buffer << std::endl;
-
-	return buffer.str();    
+    std::stringstream buffer{};
+    if (this->m_head == nullptr) return buffer.str(); // пустая строка
+    auto current = this->m_head;
+    while (current != nullptr)
+    {
+	buffer << current->data << " ";
+	current = current->next;
+    }
+    buffer << std::endl;	
+    return buffer.str();    
 }
 
 template<typename T>
