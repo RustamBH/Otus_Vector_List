@@ -21,7 +21,7 @@ public:
     size_t getCapacity() const { return m_capacity; }
     void insert(size_t index, T value);
     void erase(size_t index);    
-    T& operator[](size_t index);
+    T& operator[](size_t index) const;
     std::string print() const;
 private:    
     size_t m_size;
@@ -92,7 +92,7 @@ void MyVector<T>::erase(size_t index)
 }
 
 template<typename T>
-inline T& MyVector<T>::operator[](size_t index)
+inline T& MyVector<T>::operator[](size_t index) const
 {
     // TODO: insert return statement here
     if (index < 0 || index >= m_size) {        
