@@ -13,7 +13,7 @@ int main()
         myvec.push_back(i);
     }
     std::cout << "Output myvec: ";
-    myvec.print(); // 0 1 2 3 4 5 6 7 8 9
+    std::cout << myvec.print(); // 0 1 2 3 4 5 6 7 8 9
 
     std::cout << "Size myvec = " << myvec.getSize() << std::endl;  // 10
 
@@ -21,16 +21,16 @@ int main()
     myvec.erase(2);
     myvec.erase(3);
     myvec.erase(4);    
-    myvec.print(); // 0 1 3 5 7 8 9    
+    std::cout << myvec.print(); // 0 1 3 5 7 8 9    
 
     std::cout << "Size myvec = " << myvec.getSize() << std::endl;   // 7    
     myvec.insert(0, 10);
-    myvec.print(); // 10 0 1 3 5 7 8 9
+    std::cout << myvec.print(); // 10 0 1 3 5 7 8 9
     myvec.insert(4, 20);
-    myvec.print(); // 10 0 1 3 20 5 7 8 9
+    std::cout << myvec.print(); // 10 0 1 3 20 5 7 8 9
     int sz = myvec.getSize(); // 9
     myvec.insert(sz, 30);
-    myvec.print(); // 10 0 1 3 20 5 7 8 9 30
+    std::cout << myvec.print(); // 10 0 1 3 20 5 7 8 9 30
     
     std::cout << "myvec[" << sz << "] = " << myvec[sz] << std::endl; // 30
     std::cout << "Size myvec " << myvec.getSize() << std::endl; // 10
