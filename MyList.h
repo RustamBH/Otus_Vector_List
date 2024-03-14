@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include <sstream>
 template <typename T>
 class MyList
 {
@@ -14,7 +14,7 @@ public:
     void insert(size_t index, const T& value);    
     void erase(T value);
     T& operator[](const T index);
-    void print() const;
+    std::string print() const;
     bool is_empty() { return m_head == nullptr; };
     void pop_front();
     void pop_back();
@@ -44,8 +44,6 @@ void MyList<T>::clear()
         delete current;
         current = temp;        
     }
-    m_size = 0;
-    m_last = nullptr;
 }
 
 template<typename T>
@@ -75,7 +73,7 @@ template<typename T>
 void MyList<T>::insert(size_t index, const T& value)
 {
     if (is_empty()) return;
-    if (m_head == nullptr || index < 0 || index > m_size) {
+    if (m_head == nullptr || index > m_size) {
         std::cout << "Insert is impossible. Out of range." << std::endl;
         return;
     }
@@ -118,7 +116,7 @@ void MyList<T>::erase(T value)
     auto current = m_head;
     auto next_node = m_head->next;
 
-    while (next_node && next_node->data != value) {
+    while (nullptr != next_node && next_node->data != value) {
         next_node = next_node->next;
         current = current->next;
     }
@@ -137,7 +135,7 @@ template<typename T>
 T& MyList<T>::operator[](const T index)
 {
     // TODO: insert return statement here    
-    if (m_head == nullptr || index < 0 || index >= m_size) {        
+    if (m_head == nullptr || index >= m_size) {        
         std::cout << "Take value is impossible. Index " << index << " out of range." << std::endl;
     }
     else {
@@ -155,16 +153,19 @@ T& MyList<T>::operator[](const T index)
 }
 
 template<typename T>
-void MyList<T>::print() const
+std::string MyList<T>::print() const
 {    
-    if (this->m_head == nullptr) return;
-    auto current = this->m_head;
-    while (current != nullptr)
-    {
-        std::cout << current->data << " ";
-        current = current->next;
-    }
-    std::cout << std::endl;
+	std::stringstream buffer{};
+	if (this->m_head == nullptr) return buffer.str(); // пустая строка
+	auto current = this->m_head;
+	while (current != nullptr)
+	{
+    	buffer << current->data << " ";
+    	current = current->next;
+	}
+	buffer << std::endl;
+
+	return buffer.str();    
 }
 
 template<typename T>
