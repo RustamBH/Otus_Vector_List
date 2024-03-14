@@ -13,7 +13,7 @@ public:
     T getSize() const { return m_size; }
     void insert(size_t index, const T& value);    
     void erase(T value);
-    T& operator[](const T index);
+    T& operator[](const T index) const;
     std::string print() const;
     bool is_empty() { return m_head == nullptr; };
     void pop_front();
@@ -132,7 +132,7 @@ void MyList<T>::erase(T value)
 }
 
 template<typename T>
-T& MyList<T>::operator[](const T index)
+T& MyList<T>::operator[](const T index) const
 {
     // TODO: insert return statement here    
     if (m_head == nullptr || index >= m_size) {        
