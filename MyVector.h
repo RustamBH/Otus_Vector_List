@@ -1,33 +1,32 @@
 #pragma once
 
-
+#include <sstream>
 template <typename T>
 class MyVector
 {
 public:
-    MyVector() : m_size{ 0 }, m_capacity{ 1 }, m_region{ new T[1] }{}
-    MyVector(T value) : m_value{ value } {}
+    MyVector() : m_size{ 0 }, m_capacity{ 1 }, m_region{ new T[1] }{}    
+    MyVector(const std::initializer_list<T> list){
+        size_t i = 0;
+        m_region = new T[list.size()];
+        for(auto it = list.begin(); it != list.end(); ++it, i++){           
+            m_region[i] = *it;
+            ++m_size;
+        }
+    }
     ~MyVector() { delete[] m_region; }
 
     void push_back(T value);
-    T getSize() const { return m_size; }
-    T getCapacity() const { return m_capacity; }
+    size_t getSize() const { return m_size; }
+    size_t getCapacity() const { return m_capacity; }
     void insert(size_t index, T value);
     void erase(size_t index);    
-    T& operator[](T index);
-
-    void print() const {
-        for (size_t i = 0; i < m_size; ++i)
-            std::cout << m_region[i] << " ";
-        std::cout << std::endl;
-    }
-
-private:
-    T m_value;
+    T& operator[](size_t index);
+    std::string print() const;
+private:    
     size_t m_size;
     size_t m_capacity;
     T* m_region;
-    size_t index;
 };
 
 
@@ -79,22 +78,35 @@ void MyVector<T>::insert(size_t index, T value)
 }
 
 template <typename T>
-void MyVector<T>::erase(size_t index) {
+void MyVector<T>::erase(size_t index) 
+{
     if (index < 0 || index >= m_size) {
         std::cout << "Erase is impossible. Index " << index << " out of range." << std::endl;
         return;
-    }   
-    for (size_t i = index; i < m_size; ++i)
+    }
+    if (index == m_size - 1)
+        m_region[index] = 0;
+    for (size_t i = index; i < m_size - 1; ++i)
         m_region[i] = m_region[i + 1];
     --m_size;   
 }
 
 template<typename T>
-inline T& MyVector<T>::operator[](T index)
+inline T& MyVector<T>::operator[](size_t index)
 {
     // TODO: insert return statement here
     if (index < 0 || index >= m_size) {        
         std::cout << "Take value is impossible. Index " << index << " out of range." << std::endl;       
     } else 
         return m_region[index];    
+}
+
+template<typename T>
+std::string MyVector<T>::print() const
+{
+    std::stringstream buffer{};
+    if (m_size == 0) return buffer.str();// пустая строка 
+    for (size_t i = 0; i < m_size; ++i)
+        buffer << m_region[i] << " ";
+    buffer << std::endl;    
 }
