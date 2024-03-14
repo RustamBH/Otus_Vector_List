@@ -16,10 +16,10 @@ public:
     }
     ~MyVector() { delete[] m_region; }
 
-    void push_back(T value);
+    void push_back(const T& value);
     size_t getSize() const { return m_size; }
     size_t getCapacity() const { return m_capacity; }
-    void insert(size_t index, T value);
+    void insert(size_t index, const T& value);
     void erase(size_t index);    
     T& operator[](size_t index) const;
     std::string print() const;
@@ -31,7 +31,7 @@ private:
 
 
 template <typename T>
-void MyVector<T>::push_back(T value) {
+void MyVector<T>::push_back(const T& value) {
     if (m_size < m_capacity) {
         m_region[m_size] = value;
         ++m_size;
@@ -51,7 +51,7 @@ void MyVector<T>::push_back(T value) {
 
 
 template<typename T>
-void MyVector<T>::insert(size_t index, T value)
+void MyVector<T>::insert(size_t index, const T& value)
 {
     if (index > m_size) {        
         std::cout << "Insert is impossible. Index " << index << " out of range." << std::endl;
