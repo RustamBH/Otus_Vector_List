@@ -53,7 +53,7 @@ void MyVector<T>::push_back(T value) {
 template<typename T>
 void MyVector<T>::insert(size_t index, T value)
 {
-    if (index < 0 || index > m_size) {        
+    if (index > m_size) {        
         std::cout << "Insert is impossible. Index " << index << " out of range." << std::endl;
         return;
     }
@@ -80,7 +80,7 @@ void MyVector<T>::insert(size_t index, T value)
 template <typename T>
 void MyVector<T>::erase(size_t index) 
 {
-    if (index < 0 || index >= m_size) {
+    if (index >= m_size) {
         std::cout << "Erase is impossible. Index " << index << " out of range." << std::endl;
         return;
     }
@@ -95,7 +95,7 @@ template<typename T>
 inline T& MyVector<T>::operator[](size_t index) const
 {
     // TODO: insert return statement here
-    if (index < 0 || index >= m_size) {        
+    if (index >= m_size) {        
         std::cout << "Take value is impossible. Index " << index << " out of range." << std::endl;       
     } else 
         return m_region[index];    
