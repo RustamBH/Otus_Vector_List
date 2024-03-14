@@ -9,7 +9,7 @@ public:
     MyVector(const std::initializer_list<T> list){
         size_t i = 0;
         m_region = new T[list.size()];
-        for(auto it = list.begin(); it != list.end(); ++it, i++){           
+        for(auto it = list.begin(); it != list.end(); ++it, ++i){           
             m_region[i] = *it;
             ++m_size;
         }
