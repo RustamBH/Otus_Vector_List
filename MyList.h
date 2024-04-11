@@ -139,7 +139,7 @@ T& MyList<T>::operator[](size_t index) const
         std::cout << "Take value is impossible. Index " << index << " out of range." << std::endl;
     }
     else {
-        int counter = 0;
+        size_t counter = 0;
         auto current = this->m_head;
         while (current != nullptr)
         {
