@@ -1,6 +1,8 @@
 #pragma once
 
+#include <iostream>
 #include <sstream>
+
 template <typename T>
 class MyVector
 {
